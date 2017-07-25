@@ -1,0 +1,49 @@
+<html> <!-- internal css with different paragraph style: positioning -->
+    <head>
+        <title>webPage with Style: CSS 1 </title>
+        <style type = "text/css">
+            .underlined{
+                text-decoration:underline;
+            }
+            
+            #first-section{
+                color:blue;
+                background-color: yellow;
+                width: 200px;
+                position: relative;
+                left: 100px;
+                top: 100px;
+                z-index: 1;
+                opacity:1;
+            }
+            
+            #second-section{
+                color:green;
+                background-color: #D358F7;
+                width: 50%;
+                position: relative;
+                z-index:2;
+                opacity:0.5;
+                
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        <h1>CSS is cool!</h1>
+        <div id="first-section">
+            <p>The lazy dogs sleep whole day without eating any food, is it going to die?</p>
+            <p> This is the internal CSS style example.</p>
+            <p>HIHIHI  both style.</p>
+        </div>
+        
+        <div id="second-section">
+            <p>Using ID now.</p>
+            <P> i WAN TO dance, but musice is low. <span class="underlined">This is underline.</span></P>
+        </div>
+        <p>This is not floated</p>
+    </body>
+    
+</html>
