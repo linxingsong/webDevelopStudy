@@ -146,6 +146,130 @@
                 position: relative;
                 top:8px;
             }
+            
+            #page-container{
+                width: 1000px;
+                margin:0 auto;
+            }
+            h2{
+                font-weight: normal;
+                margin-top:30px;
+                font-size:20px;
+                border-bottom:  2px solid #A91717;
+                width: 100px;
+            }
+            h3 a{
+                color:black;
+                font-size: 20px;
+                text-decoration: none;
+            }
+            h3 a:hover{
+                color: #1167A8;
+            }
+            
+            #article-summary{
+                color: #5A5A5A;
+                width: 250px;
+                float:left;
+            }
+            
+            #article-summary img{
+                height:15px;
+                position:relative;
+                top:2px;
+            }
+            
+            #article-summary a{
+                text-decoration: none;
+                color:#A91717;
+                border-left: 1px solid #CCCCCC;
+                padding:6px;
+            }
+            #article-summary a:hover{
+                text-decoration: underline;
+                color: #1167A8;
+            }
+            
+            #article-container{
+                float: left;
+                width:660px;
+                border-right: 1px solid #CCCCCC;
+                padding-right: 5px;
+            }
+            #main-article-img{
+                width: 400px;
+                margin-left:5px;
+            }
+            #article-hr{
+                border-top:1px solid  #a91717;
+                width:50px;
+            }
+            
+            .article-link{
+                color: black;
+                text-decoration: none;
+            }
+            
+            #watch-listen {
+                width:290px;
+                float: right;
+                position: relative;
+                top:-340px;
+            }
+            
+            h4 {
+                
+                font-weight: normal;
+                font-size:20px;
+                
+            }
+            
+            .article-side-image {
+                float:left;
+                width:95px;
+                margin-right:10px;
+                
+            }
+            
+            .watch-listen-link {
+
+                text-decoration: none;
+                color:black;
+                font-weight:bold;
+                font-size:15px;
+                
+            }
+            
+            .watch-listen-link:hover {
+                color:#1167a8;
+                
+            }
+            
+            .side-article {
+                
+                float:right;
+                width:170px;
+                position:relative;
+                top:-18px;
+            }
+            
+            .no-border {
+                
+                border-left:none;
+                padding:0;
+            }
+            
+            .border-right {
+                
+                border-right: 1px solid #CCCCCC;
+                padding:5px;
+                
+            }
+            
+            .clock{
+                width:12px;
+            }
+            
         </style>
         
     </head>
@@ -224,10 +348,67 @@
                 </div>
             </div>
         
+            <div class="clear"></div>
+        
+            <div id="page-container">
+        
+            <div id="main-article">
+                <h2>Technology</h2>
+                <div id="article-container">
+                    <h3><a href="">Smart gun hacked with cheap magnet</a></h3>
+                    <div id="article-summary">
+                        <p>A hacker circumvents protections on a gun designed to limit who can shoot it</p>
+                        <p><img src="images/clock.png"> 28 July 2017 <a href="">Technology</a></p>
+                        <hr id="article-hr" align="left">
+                        <p><a class="article-link" href="">Easy-to-find ransomware fuels attacks</a></p>
+                        <p><a class="article-link" href="">Pay your fare using a 3D face map</a></p>
+                    </div>
+                    <img id="main-article-img" src="images/main-article.png">
+                </div>
+                
+            </div>
+            
+            <div class="clear"></div>
+            <div id="watch-listen">
+                <h4>Watch/Listen</h4>
+                <img class="article-side-image" src="images/article1.png">
+                
+                <div class="side-article">
+                
+                    <p><a class="watch-listen-link" href="">UK science chief backs blockchains</a></p>
+
+                    <p><img class="clock" src="images/clock.png"> <span class="date">28 July 2017</span></p>
+                    
+                </div>
+                
+                <div class="clear"></div>
+                
+                <img class="article-side-image" src="images/article2.png">
+                
+                <div class="side-article">
+                
+                    <p><a class="watch-listen-link" href="">
+Drone register gives 'accountability'</a></p>
+
+                    <p><img class="clock" src="images/clock.png"> <span class="date border-right">28 July 2017</span><br><a class="topic-link no-border" href="">Technology</a></p>
+                    
+                </div>
+                
+                <div class="clear"></div>
+                
+                <img class="article-side-image" src="images/article3.png">
+                
+                <div class="side-article">
+                
+                    <p><a class="watch-listen-link" href="">SpaceX rocket explodes during landing</a></p>
+
+                    <p><img class="clock" src="images/clock.png"> <span class="date border-right">28 July 2017</span><br><a class="topic-link no-border" href="">Science & Environment</a></p>
+                    
+                </div>
+            </div>
         </div>
         
-        
-        
+        </div>
     </body>
     
 </html>
