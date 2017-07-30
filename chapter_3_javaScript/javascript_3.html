@@ -1,0 +1,39 @@
+<html> <!--response for clicking-->
+    <head>
+        <title>Javascript_3</title>
+    </head>
+
+    <body>
+        <p id="text">Hello World</p>
+        <button id="myButton">Change Text</button>
+        <p id="secondParaph">Javascript is ......</p>
+        <button id="myButton2">Appent Text</button>
+        <p id="thirdParaph"></p>
+        <button id="myButton3">Appent Text</button>
+        <p id="moreText">There are some text.</p>
+        <button id="style">Style text</button>
+        
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function(){
+                alert("Buttton clicked.");
+                document.getElementById("text").innerHTML="New String";
+            }
+            document.getElementById("myButton2").onclick = function(){
+               //add new string at end
+                document.getElementById("secondParaph").innerHTML="I think "+document.getElementById("secondParaph").innerHTML +" another program language.";
+            }
+            document.getElementById("myButton3").onclick = function(){
+                document.getElementById("thirdParaph").innerHTML="<h1>This is another paragraph.</h1>";
+            }
+            
+            document.getElementById("style").onclick = function(){
+                document.getElementById("moreText").style.color="red";
+                document.getElementById("moreText").style.fontSize="30px";
+                document.getElementById("moreText").style.display="none";
+            }
+            
+            
+            
+        </script>
+    </body>
+</html>
