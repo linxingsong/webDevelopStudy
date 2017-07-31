@@ -1,15 +1,9 @@
-
-
-<html>
-
+<html> 
     <head>
-        
-        <title>Javascript_9_GuessNumber_While</title>
-    
+        <title>Javascript_10_Function</title>
     </head>
 
     <body>
-    
         <p>How many fingers are you holding up?</p>
         
         <p>
@@ -35,6 +29,26 @@
         
         <script type="text/javascript">
             
+            function doAGuess(correctAnswer) {
+                
+                var guess = Math.random();
+
+                    guess = guess * 6;
+
+                    guess = Math.floor(guess);
+
+                    if (guess == correctAnswer) {
+                        
+                        return (true);
+
+                    } else {
+
+                        return(false);
+
+                    }
+                
+            }
+            
             document.getElementById("guess").onclick = function() {
                 
                 var myNumber = document.getElementById("myNumber").value;
@@ -44,18 +58,12 @@
                 var numberOfGuesses = 1;
                 
                 while (gotIt == false) {
-                
-                    var guess = Math.random();
 
-                    guess = guess * 6;
-
-                    guess = Math.floor(guess);
-
-                    if (guess == myNumber) {
+                    if (doAGuess(myNumber) == true) {
                         
                         gotIt = true;
 
-                        alert ("Got it! It was a " + guess + ". It took me " + numberOfGuesses + " guesses.");
+                        alert ("Got it! It was a " + myNumber + ". It took me " + numberOfGuesses + " guesses.");
 
                     } else {
 
@@ -69,7 +77,5 @@
             
             
         </script>
-        
     </body>
-
 </html>
