@@ -1,0 +1,54 @@
+<html> 
+    <head>
+        <title>Javascript8_GuessNumber & loop</title>
+    </head>
+
+    <body>
+        <p>What is the number you Guess?</p>
+        
+        <p><input type="text" id="magicNumber"></p>
+    
+        <p><button id="checkMagicNumber">Guess</button></p>
+        <p id="colorList"></p>
+        
+        <script type="text/javascript">
+            
+            document.getElementById("checkMagicNumber").onclick = function() {
+                
+                var guessedNumber = document.getElementById("magicNumber").value;
+                
+                var number = Math.floor(Math.random()*5)+1;
+                
+                if (guessedNumber == number) {
+                    
+                    alert("You got it! The number is "+ number);
+                    
+                } else {
+                    
+                    alert("Nope, the number is "+ number);
+                    
+                }
+                //for loop
+                for(var i=0; i<5; i++){
+                    alert(i);
+                }
+                var colours = ["Red", "Yellow", "Blue"];
+                var text = "";
+                var i;
+                for (i = 0; i < colours.length; i++) {
+                    text += colours[i] + " ";
+                }
+                document.getElementById("colourList").innerHTML = text;   
+                }
+            
+                //while loop
+                var i=0;
+                while(i<colours.length){
+                    alert(colours[i]);
+                    i++;
+                }
+                
+            
+        </script>
+    </body>
+</html>
