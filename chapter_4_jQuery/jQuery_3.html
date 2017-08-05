@@ -1,0 +1,41 @@
+<html>
+
+    <head>
+        <title>jQuery_2_Update Content</title>
+        
+        <script src="jquery-3.2.1.min.js"></script> 
+        
+        <style type="text/css">
+            #circle{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background-color: green;
+                margin: 20px;
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        <div id="circle"></div>
+        <p>This is some text.</p>
+        
+        <iframe src="https://www.ecowebhosting.co.uk"></iframe>
+        
+        <script type="text/javascript">
+            $("#circle").hover(function(){
+                $("p").html("This is new text");
+                
+                $("iframe").attr("src","thhp://www.baidu.com");
+                
+            })
+            
+            
+        </script>
+        
+        
+    </body>
+
+</html>
