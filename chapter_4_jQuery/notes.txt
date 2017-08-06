@@ -1,0 +1,14 @@
+Lect 1:
+    <xmp><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script></xmp>
+
+    This is third party website, no controlled on it, but many people use it.
+    For complete control, download jQuery.
+
+    <xmp><script src="jquery-3.2.1.min.js"></script></xmp>
+    
+    Regular Expression: for checking formate of content of string, like name, password,                     or any thing you want to check.
+    
+
+
+
+    
