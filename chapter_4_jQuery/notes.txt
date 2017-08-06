@@ -7,6 +7,13 @@ Lect 1:
     <xmp><script src="jquery-3.2.1.min.js"></script></xmp>
     
     Regular Expression: for checking formate of content of string, like name, password,                     or any thing you want to check.
+
+	jQuery email validation function:
+		regex expression: 
+			function isEmail(email) {
+  				var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  				return regex.test(email);
+			}
     
 
 
