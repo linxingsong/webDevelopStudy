@@ -1,0 +1,70 @@
+<html>
+
+    <head>
+        <title>jQuery_4_Fading Content</title>
+        
+        <script src="jquery-3.2.1.min.js"></script> 
+         <style type="text/css">
+            #circle{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background-color: green;
+                margin: 20px;
+            }
+            .square{
+                width: 150px;
+                height: 150px;
+                background-color: red;
+                margin: 20px;
+            }
+            
+             #hiddenText{
+                 display: none;
+             }
+             
+            
+        </style>
+    </head>
+    
+    <body>
+        <div id="circle"></div>      
+        <div class="square"></div>
+        <div class="square"></div>
+        
+        <p id="text">This is soem text for testing to fadeOut.</p>
+        <button id="fadeOut">Fade Out Text</button>
+        <button id="toggle">Toggle Text</button>
+        <P id="hiddenText">This is hidden text.</P>
+        <button id="fadeIn">Fade In Text</button>
+        <script type="text/javascript">
+            $("div").click(function(){
+                //same as set display to none.
+                // hide also do the same job.
+                $(this).fadeOut("slow", function(){
+                    alert("FadeOut has finished.");
+                }); 
+            });
+            
+            $("#fadeOut").click(function(){
+                $("#text").fadeOut();
+            });
+            
+            $("#fadeIn").click(function(){
+                $("#hiddenText").fadeIn();
+            });
+            
+            $("#toggle").click(function(){
+                //or use boolean to check.
+                if($("#text").css("display")=="none"){
+                    $("#text").fadeIn();
+                }else{
+                    $("#text").fadeOut();
+                }
+            });
+        </script>
+        
+        
+    </body>
+
+</html>

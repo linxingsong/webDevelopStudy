@@ -1,7 +1,7 @@
 <html>
 
     <head>
-        <title>jQuery_2_Update Content & style</title>
+        <title>jQuery_5_Animation Content</title>
         
         <script src="jquery-3.2.1.min.js"></script> 
         
@@ -26,28 +26,19 @@
     
     <body>
         <div id="circle"></div>
-        <p>This is some text.</p>
-        
-        <iframe src="https://www.ecowebhosting.co.uk"></iframe>
-        
-        <div class="square"></div>
-        <div class="square"></div>
-        
+
         <script type="text/javascript">
-            $("div").click(function(){
-                $("p").html("This is new text");
-                
-                $(this).css("display","none");
-                
-                $(this).css("background-color","red");
-                
-                if($(this).attr("id")=="circle"){
-                    alert("You click on a circle.");
-                }else{
-                    alert("You click on a square.");
-                }
+            $("#circle").click(function(){
+                $(this).animate({
+                    width:"400px",
+                    height:"400px",
+                    marginLeft:"50px",
+                    marginTop:"50px"
+                }, 2000, function(){
+                    //action when animation finish
+                    $(this).css("background-color","blue");
+                });
             });
-            
             
         </script>
         
