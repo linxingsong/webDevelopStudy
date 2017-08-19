@@ -1,7 +1,4 @@
 <?php
-
-echo "Hello World.";
-
-
-
+    include("includeFile.php");
+    echo file_get_contents("https://www/ecowebhosting.co.uk");
 ?>
