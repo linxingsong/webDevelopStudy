@@ -1,13 +1,16 @@
 <?php
-    $link = mysqli_connect("localhost", "root","","openemr");
+    $link = mysqli_connect("localhost", "root","","dairyDB");
     if(mysqli_connect_error()){
-        die("There is error.");
+        echo "ERROR";
+        die ;
     }
-    
-    $query ="SELECT * FROM registry";
-    if($result =mysqli_query($link, $query)){
+    //SQL query for MariaDB server version
+    $query ="SELECT ID, email, password, daily FROM users";
+    if($result = mysqli_query($link,$query)){
         $row = mysqli_fetch_array($result);
-        echo "Your Name is ".$row['name'];
+        echo "Your Name is ".$row['email'];
+    }else{
+        printf("error: %s\n",mysqli_error($link));
     }
     
 ?>
