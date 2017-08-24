@@ -2,6 +2,7 @@
     session_start();
     $error ="";
     $result="";
+    $hashedPassword="";
     if(array_key_exists("logout",$_GET)){
         unset($_SESSION);
         setcookie("id","", time()-60*60);
@@ -11,10 +12,7 @@
     }
 
     if(array_key_exists("submit", $_POST)){
-        $link = mysqli_connect("localhost","root","","dairyDB");
-        if(mysqli_connect_error()){
-            die("Database Connection Error.");
-        }
+        include("connection.php"); 
         
         if(!$_POST['email']){
             $error .="An email is required.<br>";
@@ -52,16 +50,15 @@
                     $hashedPassword = md5(md5($row['id']).$_POST['password']);
                     if(hashedPassword == $row['password']){
                         $_SESSION['id']=$row['id'];
-                    }
-                    if($_POST['stayLogin']=='1'){
-                        setcookie("id", $row['id'], time()+60*60*24*30);
-                    }
-                    header("Location: LoggedIn.php");
-                }else{
-                    $error ="That email/password combination is not found.";
-                }
-                else{
-                    $error ="That email/password combination is not found.";
+                        if($_POST['stayLogin']=='1'){
+                            setcookie("id", $row['id'], time()+60*60*24*30);
+                        }
+                        header("Location: LoggedIn.php");
+                        }else{
+                            $error ="That email/password combination is not found.";
+                        }
+                    }else{
+                        $error ="That email/password combination is not found.";
                 }
             }   
         }
@@ -70,20 +67,55 @@
 
 ?>
 
-<div id="error"><?php echo $error; ?></div>
+<?php include("header.php");?>
+        <div class="container" id="homePageContainer">
+            <h1>Secret Diary</h1>
+            <p><strong>Write Yor Journal.</strong></p>
+            <div id="error"><?php
+                if($error!=""){
+                    echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';   
+                }
+            ?></div>
 
-<form method ="post">
-    <input type="email" name="email" placeholder="Email Address">
-    <input type="password" name="password" placeholder="password">
-    <input type="checkbox" name="stayLogin" value=1>
-    <input type="hidden" name="signUp" value="1">
-    <input type="submit" name="submit" value="Sign Up!">  
-</form>
+            <form method ="post" id="signUpForm">
+                <p>Intersted? Sign Up now.</p>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="stayLogin" value=1> Stay Log in
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="signUp" value="1">
+                    <input type="submit" class="btn btn-success" name="submit" value="Sign Up!">  
+                </div>
+                <p><a class="toggleForm" href="#">Log In</a></p>
+            </form>
 
-<form method ="post">
-    <input type="email" name="email" placeholder="Email Address">
-    <input type="password" name="password" placeholder="password">
-    <input type="checkbox" name="stayLogin" value=1>
-    <input type="hidden" name="signUp" value="0">
-    <input type="submit" name="submit" value="Log In!">  
-</form>
+            <form method ="post" id="logInForm">
+                <p>Log in using your username and password</p>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="stayLogin" value=1> Stay Log in
+                    </label>
+                    <input type="hidden" name="signUp" value="0">
+                </div>
+                <div class="form-group">
+                    
+                    <input type="submit" class="btn btn-success" name="submit" value="Log In!">
+                </div>
+                <p><a class="toggleForm" href="#">Sign Up</a></p>
+            </form>
+        </div>
+<?php include("footer.php"); ?>
