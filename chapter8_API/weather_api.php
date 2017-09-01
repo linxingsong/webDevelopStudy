@@ -58,8 +58,7 @@
             <form>
                 <div class="form-group">
                     <label for="city">Enter the name of City</label>
-                    <input type="text" class="form-control" name="city" id="city"  placeholder="eg. New York" value="<?php                          echo $_GET['city'];
-                              ?>">
+                    <input type="text" class="form-control" name="city" id="city" value="<?php  echo $_GET['city'];?>">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
