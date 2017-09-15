@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="appjs/app.min.css">
+    <style>
+			@-webkit-keyframes pulse {
+				0% {
+					background-color: #CCC;
+				}
+				25% {
+					background-color: #EEE;
+				}
+				50% {
+					background-color: #CCC;
+				}
+				75% {
+					background-color: #EEE;
+				}
+				100% {
+					background-color: #CCC;
+				}
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar blue">
+        <div class="app-title">Send email</div>
+      </div>
+      <div class="app-content">
+          <p class="app-section">
+					Click below to send email.
+          </p>
+          
+          <div class="app-section" id="contact_list">
+              
+          </div>
+          
+        <div class="app-section">
+          <div class="app-button" id="newuser" data-target="sendemail">Sent to new users</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="app-page" data-page="sendemail">
+			<div class="app-topbar">
+				<div class="app-title">Send Email</div>
+				<div class="right app-button" data-back>Done</div>
+			</div>
+
+			<div class="app-content">
+                <div class="app-section" id="message"></div>
+				<div class="app-section">
+					From: <input class="app-input" id="sender_email" placeholder="Sender's Email Address">
+				</div>
+                <div class="app-section">
+					To: <input class="app-input" id="receiver_email" placeholder="Receipt's Email Address">
+				</div>
+         
+				<form class="app-section">
+					<input class="app-input" name="subject" id="subject" placeholder="Subject">
+					<textarea class="app-input" name="message" id="content" placeholder="Message"></textarea>
+					<div class="app-button green app-submit" id="send_buttton">Send</div>
+				</form>
+			</div>
+		</div>
+    
+
+    <script src="appjs/zepto.js"></script>
+    <script src="appjs/app.min.js"></script>
+    <script>
+      App.controller('home', function (page) {
+        if(typeof localStorage !=="undefined"){
+            if(localStorage.getItem("receiver_email")!== null){
+                var recipientList = JSON.parse(localStorage.getItem("receiver_email"));
+                $.each(recipientList, function(index, value){
+                    $(page).find("#contact_list").append('<div class="app-button redirect">'+value +'</div>');
+                });
+                    $(page).find("contact_list").show();  
+                    $(page).find(".redirect")
+                        .clickable()
+                        .on("click", function(){
+                        localStorage.setItem("receiver_email", $(this).html());
+                        App.load("sendemail");
+                        
+                    });
+                }else{   
+                     $(page).find("contact_list").hide();    
+            }
+        }
+      });
+        
+      App.controller('sendemail', function (page) {
+          $(page).find("message").hide();
+          if(typeof localStorage !=='undefined'){
+              $(page).find("#newuser").clickable().click(function(){
+                if(localStorage.getItem("receiver_email")!== null){
+                  localStorage.removeItem("receiver_email"); 
+                }
+                  App.load("sendemail");
+              });
+              if(localStorage.getItem("sender_email") !== null){
+                  $(page).find("#sender_email").val(localStorage.getItem("sender_email"));
+              }
+              if(localStorage.getItem("receiver_email") !== null){
+                  $(page).find("#receiver_email").val(localStorage.getItem("receiver_email"));
+              }
+              
+          }
+          $(page).find('#send_button')
+					.clickable()
+					.on('click', function () {
+                      $.ajax({
+                      type: 'GET',
+                      url: '/projects',
+                      // data to be added to query string:
+                      data: { name: 'Zepto.js' },
+                      // type of data we are expecting in return:
+                      dataType: 'json',
+                      timeout: 300,
+                      context: $('body'),
+                      success: function(data){
+                        // Supposing this JSON payload was received:
+                        //   {"project": {"id": 42, "html": "<div>..." }}
+                        // append the HTML to context object.
+                        if(data.success == true){
+                            $(page).find("message").html("You email was send successfully").show();
+                        }else{
+                            $(page).find("message").html("You email was not send").show(); 
+                        }
+                        
+                      },
+                      error: function(xhr, type){
+                        $(page).find("message").html("You email was not send").show(); 
+                      }
+                   })
+              if(typeof localStorage !== "undefined"){
+                  localStorage.setItem("sender_email", $("#sender_email").val());
+                  var recipientList = new Array();
+                  if(localStorage.getItem("receiver_email")  !== null){
+                      recipientList = JSON.parse(localStorage.getItem("receiver_email"));
+                  }
+                  if ($.inArray($("#receiver_email").val(), recipientList) ==-1){
+                      recipientList.push($("#receiver_email").val());
+                      recipientList.sort();
+                      localStorage.setItem("receiver_email", JSON.stringify(recipientList));
+                      console.log(recipientList);
+                  }
+                  
+              }else{
+                   alert("Wrong");   
+              }
+              
+          });
+      });
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+  </body>
+</html>
