@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML 5 & CSS 3</title>
+    
+      <script>document.createElement("container");</script>
+      <style>
+          article{
+              color:green;
+          }
+          
+          header, footer, article, section, nav, menu{
+              display: block;
+          }
+          
+      </style>
+  
+  </head>
+  <body>
+    <form id="myForm" action="processform.php">
+      <p>Placeholder: <input type="text" placeholder="Insert Name Here"></p> 
+      <p>Autofocus: <input type="text" autofocus></p>
+      <p>Autocomplete off: <input type="text" autocomplete="off"></p>
+      <p>Required: <input type="text" required></p>
+      <p>Email: <input type="email"></p>
+      <p>Pattern: <input type="text" pattern="[0-9]"></p>
+        <datalist id="name">
+          <select>
+            <option value="Rob">Rob</option>
+            <option value="Eric">Eric</option>
+          </select>
+        </datalist>
+        
+      <p>Autocomplete: <input type="test" list="name"></p>
+      <p>Multiple file upload: <input type="file" multiple></p>
+        
+        
+      <p><input type="submit" value="submit" formaction="professform2.php" formmethod="post"></p>
+    </form>
+      
+    <p>Code outside the form: <input form="myForm" type="text"></p>  
+    
+    <article>
+        this is aritile place.  
+    
+    </article>  
+    
+    <container>
+        container area.  
+    </container>
+      
+      <figure>
+            add image
+            <figcaption>
+                ...
+            </figcaption>
+      </figure>
+      
+      <input type="range" min="0" max="100" step="10">
+      
+      <div contenteditable="true">
+        There are some text. User input free.
+      </div>
+      
+  </body>
+</html>
