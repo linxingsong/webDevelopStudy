@@ -1,0 +1,84 @@
+body{
+  background-image: url('https://images.unsplash.com/photo-1471666875520-c75081f42081?auto=format&fit=crop&w=2038&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+a{
+  font-family: 'Risque', cursive;
+}
+
+.dropdown-menu {
+    border: none !important;
+    /* etc... */
+}
+
+body >.container .dropdown .dropdown-menu{
+  background-color: transparent;
+}
+
+body >.container .dropdown .dropdown-menu a:hover{
+  background-color: transparent;
+  outline: 0px;
+}
+
+body >.container .btn{
+  background-color: transparent;
+  border: 1px solid grey;
+}
+
+body >.container>.navbar a,
+body >.container>.navbar .navbar-nav .nav-item a,
+body >.container>.navbar .navbar-nav a,
+body >.container .dropdown .dropdown-menu a{
+   color: white;
+   font-family: 'Risque', cursive;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: "Lato";
+    color: white;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 5em;
+}
+
+
+.content{
+	padding-top: 25%;
+	text-align: center;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+hr {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+
+.box_position{
+  position: absolute;
+  width: 35%;
+  height: 40%;
+  margin-left: 50%;
+  margin-top: 13%;
+  font-family: 'Risque', cursive;
+}
+
+.text_center{
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid grey;
+}

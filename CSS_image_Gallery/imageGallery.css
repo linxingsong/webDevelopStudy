@@ -1,0 +1,22 @@
+*{
+  font-family: 'Shadows Into Light', cursive;
+  background-color: gray;
+}
+h1{
+  margin-left: 1%;
+  font-size: 32px;
+  font-weight: 800;
+  padding-bottom: 3px;
+  border-bottom: 3px solid black;
+  max-width: 30%
+}
+.container{
+  width: 100%;
+}
+
+img{
+  max-width: 30%;
+  max-height: 30%;
+  float: left;
+  margin: 1%;
+}

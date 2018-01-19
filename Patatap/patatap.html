@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Patatap</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="stylesheet" href="/Patatap/assert/patatap.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
+    <script type="text/javascript" src="/Patatap/assert/library/paperjs-v0.11.5/dist/paper-full.js"></script>
+    <script type="text/paperscript" canvas="canvas">
+      var keyData = {
+			q: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/bubbles.mp3']
+				}),
+				color: '#1abc9c'
+			},
+			w: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/clay.mp3']
+				}),
+				color: '#2ecc71'
+			},
+			e: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/confetti.mp3']
+				}),
+				color: '#3498db'
+			},
+			r: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/corona.mp3']
+				}),
+				color: '#9b59b6'
+			},
+				t: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/dotted-spiral.mp3']
+				}),
+				color: '#34495e'
+			},
+			y: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/flash-1.mp3']
+				}),
+				color: '#16a085'
+			},
+			u: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/flash-2.mp3']
+				}),
+				color: '#27ae60'
+			},
+			i: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/flash-3.mp3']
+				}),
+				color: '#2980b9'
+			},
+			o: {
+				sound: new Howl({
+					urls: ['assert/resources/sounds/glimmer.mp3']
+				}),
+				color: '#8e44ad'
+			},
+			p: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/moon.mp3']
+				}),
+				color: '#2c3e50'
+			},
+			a: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/pinwheel.mp3']
+				}),
+				color: '#f1c40f'
+			},
+			s: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/piston-1.mp3']
+				}),
+				color: '#e67e22'
+			},
+				d: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/piston-2.mp3']
+				}),
+				color: '#e74c3c'
+			},
+			f: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/prism-1.mp3']
+				}),
+				color: '#95a5a6'
+			},
+			g: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/prism-2.mp3']
+				}),
+				color: '#f39c12'
+			},
+			h: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/prism-3.mp3']
+				}),
+				color: '#d35400'
+			},
+			j: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/splits.mp3']
+				}),
+				color: '#1abc9c'
+			},
+			k: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/squiggle.mp3']
+				}),
+				color: '#2ecc71'
+			},
+			l: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/strike.mp3']
+				}),
+				color: '#3498db'
+			},
+			z: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/suspension.mp3']
+				}),
+				color: '#9b59b6'
+			},
+			x: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/timer.mp3']
+				}),
+				color: '#34495e'
+			},
+			c: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/ufo.mp3']
+				}),
+				color: '#16a085'
+			},
+			v: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/veil.mp3']
+				}),
+				color: '#27ae60'
+			},
+			b: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/wipe.mp3']
+				}),
+				color: '#2980b9'
+			},
+			n: {
+				sound: new Howl({
+					urls: ['assert/resources/sounds/zig-zag.mp3']
+				}),
+				color: '#8e44ad'
+			},
+			m: {
+				sound: new Howl({
+		  		urls: ['assert/resources/sounds/moon.mp3']
+				}),
+				color: '#2c3e50'
+			}
+		}
+    var circles = [];
+    function onKeyDown(event) {
+			if(keyData[event.key]){
+				var maxPoint = new Point(view.size.width, view.size.height);
+				var randomPoint = Point.random();
+				var point = maxPoint * randomPoint;
+				var newCircle = new Path.Circle(point, 500)
+				newCircle.fillColor = keyData[event.key].color;
+				keyData[event.key].sound.play();
+				circles.push(newCircle);
+			}
+		}
+
+		function onFrame(event){
+      for(var i = 0; i < circles.length; i++){
+        circles[i].scale(0.9);
+        circles[i].fillColor.hue += 1;
+        if(circles[i].area < 1){
+        	circles[i].remove();
+          circles.splice(i, 1);
+          console.log(circles);
+        }
+      }
+    }
+    
+    </script>
+    <script src="https://use.fontawesome.com/fb0565aba2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Risque" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-faded navbar-fixed-top">
+          <a class="navbar-brand" href="#">My Page</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="navbarNavDropdown" class="navbar-collapse collapse">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#">Background</a>
+                  </li>
+                  <li class="nav-item active ">
+                      <a class="nav-link" href="#">Skill</a>
+                  </li>
+                  <li class="nav-item dropdown active">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Project
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="/bootstrap/bootstrap.html">bootstrap</a>
+                          <a class="dropdown-item" href="/colorGame/colorGame.html">Color Game</a>
+                          <a class="dropdown-item" href="/todoList/todolist.html">JQuery: todoList</a>
+                          <a class="dropdown-item" href="/Patatap/patatap.html">External Library: Patatap</a>
+                      </div>
+                  </li>
+              </ul>
+              <ul class=" nav navbar-nav">
+                      <a class="nav-link" href="/login_signup/login.html"><i class="fa fa-sign-in fa-fw"></i> Login</a>
+                      <a class="nav-link" href="/login_signup/signup.html"><i class="fa fa-user-plus fa-fw"></i> Register</a>
+              </ul>
+          </div>
+      </nav>
+  </div>
+
+  <canvas id="canvas" resize></canvas>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>
